@@ -1,0 +1,33 @@
+name: "CALANGO-results"
+output_dir: "."
+navbar:
+  title: "CALANGO report"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Results"
+      icon: fa-gear
+      menu:
+        - text: "Heatmaps"
+        - text: "raw data visualization"
+          href: heatmap_phylo_raw.html
+        - text: "normalized data visualization"
+          href: heatmap_phylo_norm.html
+        - text: "percentile data visualization"
+          href: heatmap_phylo_perc.html
+        - text: "---------"
+        - text: "Scatterplots"
+        - text: "q-value scatterplots"
+          href: q_value_scatter.html
+        - text: "---------"
+        - text: "Tables"
+        - text: "Annotation term table"
+          href: table.html
+
+  right:
+    - text: "About"
+      icon: fa-info
+      href: about.html
+

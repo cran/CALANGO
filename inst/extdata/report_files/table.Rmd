@@ -1,0 +1,205 @@
+---
+title: "Table"
+output: html_document
+---
+
+Some columns are not visible by default. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Multiplot, echo = FALSE, warning = FALSE}
+
+# multiple scatterplots, with confidence intervals, in a single html page
+
+#creating plot titles and axes labels
+f <- list(size = 18, color = "black") # family = "Verdana",
+
+title_p1 <- list(text      = "Raw data",
+                 font      = f,
+                 xref      = "Phenotype",
+                 yref      = "Annotation term frequency",
+                 yanchor   = "bottom",
+                 xanchor   = "center",
+                 align     = "center",
+                 x         = 0.5,
+                 y         = 1,
+                 showarrow = FALSE)
+
+title_p2      <- title_p1
+title_p2$text <- "Rank data"
+title_p2$xref <- "Phenotype rank"
+title_p2$yref <- "Annotation term frequency rank"
+
+title_p3      <- title_p1
+title_p3$text <- "Phylogeny-aware linear model data"
+title_p3$xref <- "Contrasts of phenotypes"
+title_p3$yref <- "Contrasts of annotation term frequencies"
+
+# TODO: multicore-parallelize this for loop.
+for (i in seq_along(df_cutoff$name)){#df_cutoff$name[1:length(df_cutoff[, 1])]) { # get filtered to plot a lot
+  
+  fname <- df_cutoff$name[i]
+  
+  #output dir
+  file <- paste0(cpd, fname, ".html")
+  
+  # setting up data
+  Xdf         <- defs$x
+  names(Xdf)  <- "X_var"
+  Xdf$feature <- defs$y[, fname] / defs$denominator
+  ID          <- row.names(Xdf)
+  group <-defs$groups
+  p1 <- ggplot2::ggplot(data    = Xdf, 
+                        mapping = ggplot2::aes(x     = X_var, 
+                                               y     = feature,
+                                               label = ID
+                                               )) + 
+    ggplot2::geom_point() +
+    #    expand_limits(x = 0, y = 0) +
+    ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = TRUE) + 
+    ggplot2::theme_bw() +
+    ggplot2::labs(x = "Phenotype value", 
+                  y = "Annotation frequency")
+  
+  Xdf           <- as.data.frame(rank(defs$x[, 1]))
+  rownames(Xdf) <- rownames(defs$x)
+  names(Xdf)    <- "X_var"
+  Xdf$feature   <- rank(defs$y[, fname] / defs$denominator)
+  
+  p2 <- ggplot2::ggplot(data    = Xdf, 
+                        mapping = ggplot2::aes(x     = X_var, 
+                                               y     = feature,
+                                               label = ID)) + 
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(method = "loess", formula = y ~ x, se = TRUE) + 
+    ggplot2::theme_bw() +
+    ggplot2::labs(x = "Phenotype rank", 
+                  y = "Annotation frequency (rank)")
+  
+  # TODO: plots only consider "pic". If we implement "gls", maybe we'll need to 
+  # change something here too.
+  tmp_x        <- defs$x[, 1]
+  names(tmp_x) <- rownames(defs$x)
+  contrast_x   <- ape::pic(x = tmp_x, phy = defs$tree)
+  
+  tmp_y        <- defs$y[, fname] / defs$denominator
+  names(tmp_y) <- rownames(defs$x)
+  contrast_y   <- ape::pic(x = tmp_y, phy = defs$tree)
+  
+  Xdf   <- data.frame(contrast_x, contrast_y)
+  model <- stats::lm(contrast_y ~ contrast_x + 0)
+  
+  p3 <- ggplot2::ggplot(data    = Xdf, 
+                        mapping = ggplot2::aes(x     = contrast_x, 
+                                               y     = contrast_y, 
+                                               label = rownames(Xdf))) +
+    ggplot2::geom_point() +
+    ggplot2::geom_abline(slope     = model$coefficients[1], 
+                         intercept = 0, 
+                         color     = c("#3366FFFF"), 
+                         size      = 1) +
+    ggplot2::theme_bw() +
+    ggplot2::labs(x = "contrasts for phenotype", 
+                  y = "Contrasts for annotation frequency")
+  #             ggplot2::geom_smooth(method = "lm", se = FALSE) +
+  #    ggplot2::geom_line(data = fortify(model), aes(x = contrast_x, y = .fitted))
+  #             ggtitle(paste0("phylogeny-aware linear model data for "), i),
+  #    ggtitle("Representation of raw data             Representation of rank data                Representation of phylogenetic-aware linear model data")
+  
+  p4 <- plotly::subplot(p1, p2, p3, shareX = TRUE, shareY = FALSE, titleY = TRUE)
+  
+  p1ly <- plotly::ggplotly(p4,
+                            tooltip = c('label','X_var','Normalized feature'))
+  
+  htmlwidgets::saveWidget(p1ly, file = file,
+                          libdir = 'lib',
+                          selfcontained = FALSE)
+}
+```
+
+```{r Boxplot, echo = FALSE, warning = FALSE}
+
+for (i in seq_along(df_cutoff$name)){
+  
+  fname <- df_cutoff$name[i]
+  
+  #output dir
+  file <- paste0(cpd, fname, '_boxplot.html')
+  
+  file_name <- paste0(fname, "_boxplot_per_group.pdf")
+  
+  file_name <- gsub(":", "_", file_name)
+  
+  tmp <- data.frame(defs$x, defs$short.name, defs$groups, defs$y[fname], (defs$y[fname]/defs$denominator))
+  
+  colnames(tmp) <- c("cell_type", "short", "group", "count", "norm")
+  
+  my_pallete <- data.frame(group  = unique(tmp$group),
+                           colour = I(CALANGO_brewer_pal(length(unique(tmp$group)), 
+                                                       name = 'Set1')))
+  tmp$fill <- my_pallete$colour[match(tmp$group, my_pallete$group)]
+  
+  tmp$group <- stats::reorder(tmp$group, tmp$count, FUN = median)
+  p1 <- ggplot2::ggplot(tmp, ggplot2::aes(x = group,y = count)) + 
+    ggplot2::geom_violin(ggplot2::aes(fill = I(fill)), 
+                         scale = "width", alpha = 0.25) +  
+    ggplot2::geom_boxplot(ggplot2::aes(fill = I(fill)), 
+                          alpha = 0.3) + 
+    ggplot2::geom_jitter(width = 0.05, height = 0, size = .5) +
+    ggplot2::theme(axis.text.x  = ggplot2::element_text(angle = 45, hjust = 1), 
+                   axis.title.x = ggplot2::element_blank())
+  
+  tmp$group <- stats::reorder(tmp$group, tmp$norm, FUN = median)
+  p2 <- p1 %+% tmp +
+    ggplot2::aes(y = norm) + 
+    ggplot2::annotate("text", y = 1.02 * max(tmp$norm), x = 1, label = "Norm")
+  
+  p1 <- p1 + 
+    ggplot2::annotate("text", y = 1.02 * max(tmp$count), x = 1, label = "Count") + 
+    ggplot2::ggtitle(paste0(fname, " - ", defs$annotation.cor[fname]))
+  
+  prow <- plotly::subplot(plotly::style(p1, showlegend = FALSE, width = .1), 
+                          plotly::style(p2, showlegend = FALSE, width = .1),
+                          shareY = FALSE, titleY = FALSE)
+  
+  p3 <- plotly::ggplotly(prow, tooltip = c("x", "y"))
+  
+  htmlwidgets::saveWidget(p3,
+                          file = file,
+                          libdir = 'lib',
+                          selfcontained = FALSE
+  )
+}
+
+```
+
+```{r Table, echo = F}
+
+# CHECK HERE - NAMES, INDICES, URL ETC.
+
+dtable <- df_cutoff
+
+#build links to scatterplots
+dtable$corr_plots <- paste0('<a  target=_blank href="', 
+                            paste0('correlation_Plots/', df_cutoff$name,'.html'),
+                            '">', df_cutoff$name,'</a>') 
+
+#build links to boxplots
+dtable$boxplots <- paste0('<a  target=_blank href="', 
+                          paste0('correlation_Plots/', df_cutoff$name, '_boxplot', '.html'),
+                          '">', df_cutoff$name,'</a>')
+
+
+dtable <- DT::datatable(dtable,
+                        escape = FALSE, 
+                        filter = 'bottom',
+                        extensions = 'Buttons', 
+                        options = list(dom = 'Bfrtip', 
+                                       buttons = c('colvis','csv'),
+                                       columnDefs = list(list(visible = FALSE,
+                                                              targets = 4:(length(df_cutoff) - 2))))) # prepare table
+
+dtable
+```

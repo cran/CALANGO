@@ -1,0 +1,141 @@
+---
+title: "Heatmap - species clustering by phylogeny"
+output: html_document
+---
+
+```{r Heatmaps, echo = F, warnings = F, message = F}
+###Prepare data.frame to plot
+
+# getting data frame linking genome IDs to groups and short names
+mynames <- data.frame(genomeID  = defs$y.name, 
+                      group     = defs$groups, 
+                      shortName = defs$short.name)
+
+##DEBUG
+#y.name
+#groups
+#short.name
+#names
+
+
+##getting relevant annotation IDs to plot only them
+ids <- as.vector(df_cutoff$name)
+
+##DEBUG
+#ids
+
+#getting annotation frequencies for annotation IDs
+tmp <- defs$y[as.vector(ids)]
+mynorm <- tmp / defs$denominator
+#rm(tmp)
+
+#replacing genome IDs by user-defined names
+rownames(mynorm) <- mynames$shortName[match(rownames(mynorm), mynames$genomeID)]
+
+
+##DEBUG
+#mynorm
+
+#getting a heatmaply-compatible tree
+
+tree <- defs$tree
+
+#replacing genome IDs by short names
+tree$tip.label <- mynames$shortName[match(tree$tip.label, mynames$genomeID)]
+
+#2char
+tree$tip.label <- sapply(tree$tip.label, function(x) as.character(x))
+
+#final tree must be a dendrogram and a dendextend object
+tree2 <- stats::as.dendrogram(ape::as.phylo(tree))
+tree_final <- dendextend::set(tree2, what = "branches_lwd", value = 1)
+
+##DEBUG
+#plot(tree2)
+
+#colnames(mynorm) <- paste0(ids, " - ", output$annotation.cor[ids])
+
+mat     <- as.matrix(mynorm)
+ord.mat <- mat[tree$tip.label,]
+rm(mynorm)
+
+#to create custom hover text by adding annotation definition
+onmouseover   <- as.data.frame(ord.mat)
+onmouseover[] <- lapply(colnames(onmouseover), function(colname) {
+  paste0("definition: ", defs$annotation.cor[colname], "\n")
+})
+
+##DEBUG
+#ord.mat
+
+#color pallete for heatmap
+my_palette <- grDevices::colorRampPalette(c("white", "blue"))(n = 51)
+
+#establishing colors for groups
+jColors <- data.frame(LABEL = levels(as.factor(mynames$group)),
+                      COLOR = I(CALANGO_brewer_pal(nlevels(as.factor(mynames$group)), 
+                                                   name = 'Set1')))
+
+##DEBUG
+#jColors
+
+#coloring species by group color
+tmp       <- data.frame(species = rownames(ord.mat), stringsAsFactors = FALSE)
+tmp$group <- mynames$group[match(tmp$species, mynames$shortName)]
+tmp$COLOR <- jColors$COLOR[match(tmp$group, jColors$LABEL)]
+
+species2color <- base::unique(tmp[, -2])
+species2group <- base::unique(tmp[, -3])
+#rm(tmp)
+
+##DEBUG
+#species2color
+
+#quantile normalization
+#tmp <- normalize.quantiles(as.matrix(ord.mat))
+#colnames(tmp) <- colnames(ord.mat)
+#rownames(tmp) <- rownames(ord.mat)
+#ord.norm.mat <- tmp
+#rm(tmp)
+
+#computing distance for column clustering
+distance2 <- stats::dist(as.matrix(t(ord.mat)), method = "euclidean")
+cluster2  <- stats::hclust(distance2, method = "average")
+#cluster2_final = dendextend::set(as.dendrogram(hclust(distance2, method=c("average"))), "branches_lwd", 1)
+
+##DEBUG
+#plot(cluster2_final)
+
+
+#plot(tree_final)
+
+#Plot
+
+#mynorm
+
+mp <- heatmaply::heatmaply(
+  t(heatmaply::percentize(as.data.frame(ord.mat))),
+  # file="heatmap_norm.pdf",
+  Rowv = cluster2,
+  # row_dend_left = TRUE,
+  # width = 1000,
+  # height = 1800,
+  # subplot_heights=c(0.05, 0.01, 0.94),
+  # col_side_colors = NULL,
+  # row_side_colors = species2group$group,
+  Colv = tree2,
+  col = my_palette,
+  plot_method= "ggplot",
+  cexRow = 0.8,
+  custom_hovertext = t(onmouseover),
+  subplot_widths=c(0.9, 0.1),
+  subplot_heights=c(0.08, 0.02, 0.90),
+  col_side_colors = data.frame("Groups" = species2group$group,
+                               check.names=FALSE))
+
+suppressWarnings(
+  plotly::layout(mp,
+                 width  = 25 * nrow(ord.mat), 
+                 height = 20 * ncol(ord.mat))
+)
+```

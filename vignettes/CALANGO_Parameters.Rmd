@@ -1,0 +1,330 @@
+---
+title: "CALANGO Parameters"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CALANGO Parameters}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<img src="https://raw.githubusercontent.com/fcampelo/CALANGO/master/inst/images/CALANGO_logo.png" alt="A two-headed lizard. Drawn by Francisco's dad." height="100"/>
+
+This document lists the input parameters expected / accepted in the CALANGO 
+definition files (or, alternatively, in the `defs` list).
+
+***
+# General parameters
+
+### annotation.files.dir
+**Type**: character string
+
+**Description**: path to the directory where annotation files are located
+
+**Required**: YES
+
+**Default**: none
+
+
+### output.dir
+**Type**: character string
+
+**Description**: path to the output directory where results should be saved
+
+**Required**: YES
+
+**Default**: none
+
+
+### dataset.info
+**Type**: character string
+
+**Description**: path to a file containing the genome 
+metadata. It should contain _at least_, for each genome: 
+(1) path for annotation data; (2) phenotype data (numeric); 
+(3) normalization data (numeric)
+It must be a _tab-separated value_ file with no column headers.
+
+**Required**: YES
+
+**Default**: none
+
+
+### x.column
+**Type**: integer/numeric
+
+**Description**: index of the column from the file specified in `dataset.info` containing the phenotype data, which will be used to sort the genomes and 
+find annotation terms associated to that phenotype.
+
+
+**Required**: YES
+
+**Default**: none
+
+
+### short.name.column
+**Type**: integer/numeric
+
+**Description**: index of the column from the file specified in `dataset.info` containing the short names for species/lineages to be used when plotting data.
+
+**Required**: YES
+
+**Default**: none
+
+
+### group.column 
+**Type**: integer/numeric
+
+**Description**: index of the column from the file specified in `dataset.info` containing the group to be used for coloring the heatmaps
+
+**Required**: YES
+
+**Default**: none
+
+
+### ontology
+**Type**: character string.
+
+**Description**: which dictionary data type to use? Accepts _"GO"_ or
+_"other"_
+
+**Required**: YES
+
+**Default**: none
+
+
+### dict.path
+
+**Type**: character string
+
+**Description**: path to dictionary file (a two-column _tab-separated value_ 
+file containing annotation IDs and their descriptions). Not needed if 
+`ontology = "GO"`.
+
+**Required**: NO
+
+**Default**: none
+
+
+### column
+**Type**: character string
+
+**Description**: the _name_ of the column in the annotation file that should be used.
+
+**Required**: YES
+
+**Default**: none
+
+
+### denominator.column
+**Type**: integer/numeric
+
+**Description**: index of the column from the file specified in `dataset.info` containing the normalization data.
+
+**Required**: NO
+
+**Default**: none
+
+
+### tree.path
+**Type**: character string
+
+**Description**: path to the tree file.
+
+**Required**: YES
+
+**Default**: none
+
+
+
+### tree.type
+**Type**: character string
+
+**Description**: tree file type. Accepts _"nexus"_ or _"newick"_.
+Case-sensitive.
+
+**Required**: YES
+
+**Default**: none
+
+
+### type
+**Type**: character string
+
+**Description**: type of analysis to perform. Currently accepts only 
+_"correlation"_
+
+**Required**: YES
+
+**Default**: none
+
+
+### MHT.method
+**Type**: character string
+
+**Description**: type of multiple hypothesis testing correction to apply. 
+Accepts all methods listed in `stats::p.adjust.methods`.
+
+**Required**: NO
+
+**Default**: _"BH"_
+
+
+### cores
+**Type**: integer/numeric
+
+**Description**: Number of cores to use. Must be a positive integer.
+
+**Required**: NO
+
+**Default**: 1
+
+***
+
+# Cutoff values
+Cutoffs are used to regulate how much graphical output is produced by CALANGO. The _tab-separated value_ files that are generated at the end of the analysis 
+(and saved in the _output.dir_) will always contain all, unfiltered results.
+
+**q-value cutoffs** are used for correlation and phylogeny-aware linear models. Only entries with q-values _smaller_ than these cutoffs will be shown. 
+
+
+### spearman.qvalue.cutoff
+**Type**: numeric between 0 and 1
+
+**Required**: NO
+
+**Default**: 1
+
+
+### pearson.qvalue.cutoff
+**Type**: numeric between 0 and 1
+
+**Required**: NO
+
+**Default**: 1
+
+
+### kendall.qvalue.cutoff
+**Type**: numeric between 0 and 1
+
+**Required**: NO
+
+**Default**: 1
+
+
+### linear_model.qvalue.cutoff
+**Type**: numeric between 0 and 1
+
+**Required**: NO
+
+**Default**: 1
+
+***
+
+**correlation cutoffs** are used to establish thresholds of positive/negative correlation values for the graphical output. **Important**: these parameters are a bit counter-intuitive. Please check the example below for clarity.
+
+
+### spearman.cor.lower.cutoff / spearman.cor.upper.cutoff
+
+**Type**: numeric values between 0 and 1
+
+**Description**: Thresholds for Spearman correlation values. The selection criteria is:
+(Spearman correlation < lower.cutoff) OR (Spearman correlation > upper.cutoff)
+
+**Required**: NO
+
+**Defaults**: `spearman.cor.upper.cutoff = -1`; 
+`spearman.cor.lower.cutoff = 1` (i.e., no filtering)
+
+**Example 1**: If you set `spearman.cor.upper.cutoff = 0.8` and 
+`spearman.cor.lower.cutoff = -0.8`, only pairs with Spearman correlation values smaller than `-0.8` OR greater than `0.8` will be shown.
+
+**Example 2**: If you set `spearman.cor.upper.cutoff = 0` and 
+`spearman.cor.lower.cutoff = -1`, pairs with Spearman correlation values smaller than `-1` OR greater than `0` will be shown. Since the Spearman correlation cannot be smaller than `-1`, this means that only positively correlated pairs will be shown.
+
+**Example 3**: If you set any values such that `spearman.cor.upper.cutoff < spearman.cor.lower.cutoff`, all pairs are shown (no filtering is performed).
+
+
+### pearson.cor.lower.cutoff / pearson.cor.upper.cutoff
+
+**Type**: numeric values between 0 and 1
+
+**Description**: Thresholds for Pearson correlation values. The selection criteria is:
+(Pearson correlation < lower.cutoff) OR (Pearson correlation > upper.cutoff)
+
+**Required**: NO
+
+**Defaults**: `pearson.cor.upper.cutoff = -1`; 
+`pearson.cor.lower.cutoff = 1` (i.e., no filtering)
+
+
+### kendall.cor.lower.cutoff / kendall.cor.upper.cutoff
+
+**Type**: numeric values between 0 and 1
+
+**Description**: Thresholds for Kendall correlation values. The selection criteria is:
+(Kendall correlation < lower.cutoff) OR (Kendall correlation > upper.cutoff)
+
+**Required**: NO
+
+**Defaults**: `kendall.cor.upper.cutoff = -1`; 
+`kendall.cor.lower.cutoff = 1` (i.e., no filtering)
+
+
+**standard deviation and coefficient of variation cutoffs** (only values greater than cutoff will be shown)
+
+### sd.cutoff
+**Type**: non-negative numeric value
+
+**Required**: NO
+
+**Default**: 0
+
+
+### cv.cutoff
+**Type**: non-negative numeric value
+
+**Required**: NO
+
+**Default**: 0
+
+
+**sum of annotation terms cutoff** (only values greater than cutoff will be shown)
+
+### annotation_size.cutoff
+**Type**: non-negative integer/numeric value
+
+**Required**: NO
+
+**Default**: 0
+
+
+**prevalence and heterogeneity cutoffs** (only values greater than cutoff will be shown). **Prevalence** is defined as the percentage of lineages where annotation term was observed at least once. **Heterogeneity** is defined as the percentage of lineages where annotation term count is different from the median.
+
+### prevalence.cutoff
+**Type**: numeric value between 0 and 1
+
+**Required**: NO
+
+**Default**: 0
+
+
+### heterogeneity.cutoff
+**Type**: numeric value between 0 and 1
+
+**Required**: NO
+
+**Default**: 0
+
+***
+
+# Advanced configurations
+
+### raw_data_sd_filter
+**Type**: character string. Accepts _"TRUE"_ or _"FALSE"_
+
+**Description**: If _"TRUE"_ all annotation terms where standard deviation for annotation raw values before normalization is zero are removed. This filter is used to remove the (quite common) bias when QPAL (phenotype) and normalizing factors are strongly associated by chance.
+
+**Required**: YES
+
+**Default**: "TRUE"
+ 

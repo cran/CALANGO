@@ -1,0 +1,54 @@
+---
+title: "Annotation terms: q-values, size and coefficient of variation"
+output: html_document
+---
+
+```{r Correlation Plots, echo = FALSE, warnings = FALSE, message = FALSE}
+#Prepare data.frame to plot
+#Plot
+p <- ggplot2::ggplot(data    = df_cutoff,
+                     mapping = ggplot2::aes(x           = -log10(corrected_contrasts),
+                                            y           = -log10(Spearman_qvalue),
+                                            label       = name,
+                                            description = description,
+                                            cv          = 1 / cv)) +
+  ggplot2::geom_point(ggplot2::aes(size = size, alpha = cv)) +
+  ggplot2::theme_bw() + 
+  ggplot2::ggtitle("Spearman") +
+  ggplot2::labs(x = "-log10(Corrected contrasts)",
+                y = '-log10(Spearman correlation q-value)')
+pl1 <- plotly::ggplotly(p, 
+                        tooltip = c('size','name','description','x','y'))
+
+p <- ggplot2::ggplot(data    = df_cutoff,
+                     mapping = ggplot2::aes(x           = -log10(corrected_contrasts),
+                                            y           = -log10(Kendall_qvalue),
+                                            label       = name,
+                                            description = description,
+                                            cv          = 1 / cv)) +
+  ggplot2::geom_point(ggplot2::aes(size = size, alpha = cv)) +
+  ggplot2::theme_bw() + 
+  ggplot2::ggtitle("Kendall") + 
+  ggplot2::labs(x = "-log10(Corrected contrasts)",
+                y = '-log10(Kendall correlation q-value)')
+pl2 <- plotly::ggplotly(p, 
+                        tooltip = c('x','y','size','name','description'))
+
+p <- ggplot2::ggplot(data = df_cutoff,
+                     mapping = ggplot2::aes(x           = -log10(corrected_contrasts),
+                                            y           = -log10(Pearson_qvalue),
+                                            label       = name,
+                                            description = description,
+                                            cv          = 1 / cv)) +
+  ggplot2::geom_point(ggplot2::aes(size = size, alpha = cv)) +
+  ggplot2::theme_bw() + 
+  ggplot2::ggtitle("Pearson") +
+  ggplot2::labs(x = "-log10(Corrected contrasts)",
+                y = '-log10(Pearson correlation q-value)')
+
+pl3 <- plotly::ggplotly(p,
+                        tooltip = c('size','name','description','x','y'))
+
+htmltools::tagList(pl1, pl2, pl3)
+```
+

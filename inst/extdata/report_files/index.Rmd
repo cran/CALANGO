@@ -1,0 +1,68 @@
+---
+title: "CALANGO report"
+---
+<img src="https://raw.githubusercontent.com/fcampelo/CALANGO/master/inst/images/CALANGO_logo.png" alt="A two-headed lizard. Drawn by Francisco's dad." height="100"/>
+
+*****
+
+CALANGO is an annotation-based comparative genomics tool that searches for annotation terms, as defined in controlled dictionaries, associated with a quantitative phenotype across phenotypes.
+
+CALANGO provides three main outputs as interactive HTML5 files:
+
+- Heatmaps
+
+- Scatterplots of q-values of annotation terms
+
+- Table of annotation terms and their statistics
+
+To access these interactive visualizations please click on the `Results` button in the top bar.
+
+***
+
+## Input configuration used
+The current report was generated based on the input parameters listed below.
+
+Job finished at: `r Sys.time()`
+```{r, echo = FALSE}
+defs2 <- restore_relative_paths(defs)
+confs <- defs2[c("annotation.files.dir", 
+                 "output.dir",
+                 "dataset.info",
+                 "x.column",
+                 "short.name.column",
+                 "group.column",
+                 "ontology",
+                 "dict.path",
+                 "column",
+                 "denominator.column",
+                 "tree.path",
+                 "tree.type",
+                 "type",
+                 "MHT.method",
+                 "cores",
+                 "spearman.qvalue.cutoff",
+                 "pearson.qvalue.cutoff",
+                 "kendall.qvalue.cutoff",
+                 "linear_model.qvalue.cutoff",
+                 "spearman.cor.upper.cutoff",
+                 "spearman.cor.lower.cutoff",
+                 "pearson.cor.upper.cutoff",
+                 "pearson.cor.lower.cutoff",
+                 "kendall.cor.upper.cutoff",
+                 "kendall.cor.lower.cutoff",
+                 "sd.cutoff",
+                 "cv.cutoff",
+                 "annotation_size.cutoff",
+                 "prevalence.cutoff",
+                 "heterogeneity.cutoff",
+                 "raw_data_sd_filter")]
+confs <- data.frame(Parameter = names(confs),
+                    Value     = as.character(confs),
+                    stringsAsFactors = FALSE)
+DT::datatable(confs, 
+              options = list(pageLength = 50,
+                             searching = FALSE,
+                             info = FALSE,
+                             ordering = FALSE,
+                             dom = "t"))
+```

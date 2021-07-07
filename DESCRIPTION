@@ -1,0 +1,51 @@
+Package: CALANGO
+Type: Package
+Title: Comparative Analysis with Annotation-Based Genomic Components
+Version: 1.0.2
+Date: 2021-07-05
+Language: en-US
+Authors@R: c(person("Francisco", "Lobo",
+    email   = "franciscolobo@gmail.com",
+    role    = c("aut")),
+    person("Felipe", "Campelo",
+    email   = "fcampelo@gmail.com",
+    role    = c("aut", "cre")),
+    person("Jorge Augusto", "Hongo",
+    email   = "jorgeahongo@gmail.com",
+    role    = "aut"),
+    person("Giovanni", "Marques de Castro",
+    email   = "giomcastro@gmail.com",
+    role    = "aut"),
+    person("Gabriel", "Almeida",
+    email   = "gabriel.magno@gmail.com",
+    role    = c("sad", "dnc")))
+Maintainer: Felipe Campelo <fcampelo@gmail.com>
+Description: A first-principle, phylogeny-aware comparative genomics tool for 
+             investigating associations between terms used to annotate genomic
+             components (e.g., Pfam IDs, Gene Ontology terms,) with quantitative 
+             or rank variables such as number of cell types, genome size, or 
+             density of specific genomic elements. See the project website for 
+             more information, documentation and examples.
+License: GPL-2
+Depends: R (>= 3.6.0)
+Imports: assertthat (>= 0.2.1), pbmcapply (>= 1.5.0), ape (>= 5.3.0),
+        rmarkdown (>= 2.1.0), nlme (>= 3.1.0), BiocManager (>=
+        1.30.10), taxize (>= 0.9.92), dendextend (>= 1.13.4), heatmaply
+        (>= 1.1.0), ggplot2 (>= 2.3.2), plotly (>= 4.9.2), DT (>=
+        0.13), htmltools (>= 0.5.0), htmlwidgets (>= 1.5.1), pkgdown
+        (>= 1.5.1), knitr (>= 1.28)
+Suggests: AnnotationDbi, KEGGREST, GO.db
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+URL: https://fcampelo.github.io/CALANGO/
+BugReports: https://github.com/fcampelo/CALANGO/issues/
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2021-07-05 12:46:29 UTC; campelof
+Author: Francisco Lobo [aut],
+  Felipe Campelo [aut, cre],
+  Jorge Augusto Hongo [aut],
+  Giovanni Marques de Castro [aut],
+  Gabriel Almeida [sad, dnc]
+Repository: CRAN
+Date/Publication: 2021-07-07 08:10:08 UTC

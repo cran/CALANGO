@@ -1,0 +1,22 @@
+---
+title: "About: CALANGO"
+output: html_document
+---
+
+<img src="https://raw.githubusercontent.com/fcampelo/CALANGO/master/inst/images/CALANGO_logo.png" alt="A two-headed lizard. Drawn by Francisco's dad." height="200"/>
+
+## DESCRIPTION
+CALANGO is a first-principle, phylogeny-aware comparative genomics software to search for annotation terms (e.g Pfam IDs, GO terms or superfamilies), formally described in a dictionary-like structure and used to annotate genomic components, associated with a quantitave/rank variable (e.g. number of cell types, genome size or density of specific genomic elements).
+
+Our software has been freely inspired by (and explicitly modelled to take into account information from) ideas and tools as diverse as comparative phylogenetics methods, genome annotation, gene enrichment analysis, and data visualization and interactivity.
+
+## MAIN DEVELOPERS
+ - Jorge Augusto Hongo ([jorgeahongo@gmail.com](mailto:jorgeahongo@gmail.com))
+ - Giovanni Marques de Castro ([giomcastro@gmail.com](mailto:giomcastro@gmail.com))
+ - Felipe Campelo ([f.campelo@aston.ac.uk](mailto:f.campelo@aston.ac.uk), [fcampelo@gmail.com](mailto:fcampelo@gmail.com))
+ - Francisco Pereira Lobo ([franciscolobo@gmail.com](mailto:franciscolobo@gmail.com), [franciscolobo@ufmg.br](franciscolobo@ufmg.br))
+ 
+## CODE REPOSITORY
+The main code repository for the CALANGO package can be found at [https://github.com/fcampelo/CALANGO](https://github.com/fcampelo/CALANGO) and  [https://github.com/franciscolobo/CALANGO](https://github.com/franciscolobo/CALANGO). Please use these for bug reports or to suggest improvements.
+
+
