@@ -1,8 +1,8 @@
 Package: CALANGO
 Type: Package
 Title: Comparative Analysis with Annotation-Based Genomic Components
-Version: 1.0.2
-Date: 2021-07-05
+Version: 1.0.5
+Date: 2021-08-26
 Language: en-US
 Authors@R: c(person("Francisco", "Lobo",
     email   = "franciscolobo@gmail.com",
@@ -41,11 +41,11 @@ URL: https://fcampelo.github.io/CALANGO/
 BugReports: https://github.com/fcampelo/CALANGO/issues/
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-07-05 12:46:29 UTC; campelof
+Packaged: 2021-09-01 08:52:41 UTC; campelof
 Author: Francisco Lobo [aut],
   Felipe Campelo [aut, cre],
   Jorge Augusto Hongo [aut],
   Giovanni Marques de Castro [aut],
   Gabriel Almeida [sad, dnc]
 Repository: CRAN
-Date/Publication: 2021-07-07 08:10:08 UTC
+Date/Publication: 2021-09-02 15:00:02 UTC

@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<img src="https://raw.githubusercontent.com/fcampelo/CALANGO/master/inst/images/CALANGO_logo.png" alt="A two-headed lizard. Drawn by Francisco's dad." height="100"/>
+  <img src="https://github.com/fcampelo/CALANGO/raw/master/inst/images/CALANGO_LOGO.svg" height="150" alt="CALANGO logo. Drawn by Brazilian artist Berze - https://www.facebook.com/berzearte">
 
 This document lists the input parameters expected / accepted in the CALANGO 
 definition files (or, alternatively, in the `defs` list).

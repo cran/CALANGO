@@ -2,6 +2,7 @@
 
 export(install_bioc_dependencies)
 export(make_report)
+export(retrieve_calanguize_genomes)
 export(retrieve_data_files)
 export(run_CALANGO)
 importFrom(assertthat,assert_that)

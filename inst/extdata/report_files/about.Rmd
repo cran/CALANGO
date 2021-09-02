@@ -3,7 +3,7 @@ title: "About: CALANGO"
 output: html_document
 ---
 
-<img src="https://raw.githubusercontent.com/fcampelo/CALANGO/master/inst/images/CALANGO_logo.png" alt="A two-headed lizard. Drawn by Francisco's dad." height="200"/>
+<img src="https://github.com/fcampelo/CALANGO/raw/master/inst/images/CALANGO_LOGO.svg" alt="CALANGO logo. Drawn by Brazilian artist Berze - https://www.facebook.com/berzearte" height="300"/>
 
 ## DESCRIPTION
 CALANGO is a first-principle, phylogeny-aware comparative genomics software to search for annotation terms (e.g Pfam IDs, GO terms or superfamilies), formally described in a dictionary-like structure and used to annotate genomic components, associated with a quantitave/rank variable (e.g. number of cell types, genome size or density of specific genomic elements).
