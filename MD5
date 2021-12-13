@@ -1,6 +1,6 @@
-7342381d173b6ff8758c3c85a21ddeeb *DESCRIPTION
+151ad77865f5bd1f7a0d64fc68bdcc1d *DESCRIPTION
 6239afc49b3411cc53124a04c8ad9f29 *NAMESPACE
-e9902de765fec3c94e8459261094f21a *NEWS.md
+f45655f5412024e4ab58a86670432744 *NEWS.md
 57b2b016ac9427dd257e93258ae74bff *R/AddGenomeVectors.R
 893030f4cd9ae1643be3a49a605fec24 *R/AnnotateResults.R
 58a5adfa20229d79101c5e7a33cb5609 *R/CALANGO_brewer_pal.R
@@ -44,12 +44,13 @@ f10aa0d67d26ae38fe00fd4fc70e954a *build/vignette.rds
 ad1db72916da20efc432f3f6d4e0aded *inst/extdata/calanguize_genomes.zip
 7cf3334542011a68d34cb00b4a205977 *inst/extdata/report_files/_site.yml
 593a442752b361072e89a18e803033d6 *inst/extdata/report_files/about.Rmd
-99f1dc5995e74ed2a9530d879ddc9468 *inst/extdata/report_files/heatmap_phylo_norm.Rmd
-db72bef690d5d6c94539068fcba8dda4 *inst/extdata/report_files/heatmap_phylo_perc.Rmd
-5d265c0538b7af3734912ca213e6cb45 *inst/extdata/report_files/heatmap_phylo_raw.Rmd
+8db1bbefb39f208e842481c0b39879d2 *inst/extdata/report_files/heatmap_phylo_norm.Rmd
+63cac7fb115c58ef901952f8111cad8d *inst/extdata/report_files/heatmap_phylo_perc.Rmd
+b4443c537f270e5dbcf0b787f2533fa8 *inst/extdata/report_files/heatmap_phylo_raw.Rmd
 4440ec09cbe7c5014ca1df516a3ce85c *inst/extdata/report_files/index.Rmd
 b1367989cf2e4679f9adb4a8c18f98a0 *inst/extdata/report_files/q_value_scatter.Rmd
-6f35e55baadfab5921525a6d29335da9 *inst/extdata/report_files/table.Rmd
+ccbb30f95a8b3cd6420337e512b56f68 *inst/extdata/report_files/table.Rmd
+da58948e64bc5ccc652f61b624023c74 *inst/images/CALANGO_LOGO_whiteBG.png
 510c73684296acd702e880e4a389b5f9 *inst/images/CALANGO_interactive_table.png
 0e1e1c8751e440d46200600d629ab5b6 *inst/images/KOMODO2_logo.png
 c1589166c5777c6e71a048313aa0bc6c *inst/images/scatterplot_data.png

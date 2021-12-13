@@ -47,7 +47,7 @@ tree$tip.label <- mynames$shortName[match(tree$tip.label, mynames$genomeID)]
 tree$tip.label <- sapply(tree$tip.label, function(x) as.character(x))
 
 #final tree must be a dendrogram and a dendextend object
-tree2 <- stats::as.dendrogram(ape::as.phylo(tree))
+tree2 <- stats::as.dendrogram(ape::as.hclust.phylo(tree))#stats::as.dendrogram(ape::as.phylo(tree))
 tree_final <- dendextend::set(tree2, what = "branches_lwd", value = 1)
 
 ##DEBUG

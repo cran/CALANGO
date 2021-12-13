@@ -43,7 +43,7 @@ for (i in seq_along(df_cutoff$name)){#df_cutoff$name[1:length(df_cutoff[, 1])]) 
   fname <- df_cutoff$name[i]
   
   #output dir
-  file <- paste0(cpd, fname, ".html")
+  file <- paste0(cpd, gsub(":", "_", fname, fixed = TRUE), ".html")
   
   # setting up data
   Xdf         <- defs$x
@@ -126,11 +126,10 @@ for (i in seq_along(df_cutoff$name)){
   fname <- df_cutoff$name[i]
   
   #output dir
-  file <- paste0(cpd, fname, '_boxplot.html')
+  file <- paste0(cpd, gsub(":", "_", fname, fixed = TRUE), '_boxplot.html')
   
-  file_name <- paste0(fname, "_boxplot_per_group.pdf")
-  
-  file_name <- gsub(":", "_", file_name)
+  # file_name <- paste0(fname, "_boxplot_per_group.pdf")
+  # file_name <- gsub(":", "_", file_name)
   
   tmp <- data.frame(defs$x, defs$short.name, defs$groups, defs$y[fname], (defs$y[fname]/defs$denominator))
   
@@ -183,12 +182,16 @@ dtable <- df_cutoff
 
 #build links to scatterplots
 dtable$corr_plots <- paste0('<a  target=_blank href="', 
-                            paste0('correlation_Plots/', df_cutoff$name,'.html'),
+                            paste0('correlation_Plots/', 
+                                   gsub(":", "_", df_cutoff$name, fixed = TRUE),
+                                   '.html'),
                             '">', df_cutoff$name,'</a>') 
 
 #build links to boxplots
 dtable$boxplots <- paste0('<a  target=_blank href="', 
-                          paste0('correlation_Plots/', df_cutoff$name, '_boxplot', '.html'),
+                          paste0('correlation_Plots/', 
+                                 gsub(":", "_", df_cutoff$name, fixed = TRUE),
+                                 '_boxplot.html'),
                           '">', df_cutoff$name,'</a>')
 
 
