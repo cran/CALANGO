@@ -1,6 +1,6 @@
-151ad77865f5bd1f7a0d64fc68bdcc1d *DESCRIPTION
+db7ad7977ff2bd33153c021cdc4fb33d *DESCRIPTION
 6239afc49b3411cc53124a04c8ad9f29 *NAMESPACE
-f45655f5412024e4ab58a86670432744 *NEWS.md
+3f4233abc7749688912aabb9d7f8ea0f *NEWS.md
 57b2b016ac9427dd257e93258ae74bff *R/AddGenomeVectors.R
 893030f4cd9ae1643be3a49a605fec24 *R/AnnotateResults.R
 58a5adfa20229d79101c5e7a33cb5609 *R/CALANGO_brewer_pal.R
@@ -32,12 +32,12 @@ dff6e3efa9921f21451d2678d0699be7 *R/parse_GenomeMap.R
 efebf6e05a1f95e7ed226f5965dd31b3 *R/read_calango_file.R
 f8f4d3b6a63cd2fc337bcc7b587c8bad *R/restore_relative_paths.R
 0d8296fb556596377d764c2b22da3dff *R/retrieve_calanguize_genomes.R
-8e5c538a0fea8664a961b3e4a4cd4cb9 *R/retrieve_data_files.R
+9a64c6d4c8494b2d2f47d2082e183dac *R/retrieve_data_files.R
 4c7b42177ea4ca7f4af166b1d142a928 *R/run_CALANGO.R
 6e046173b9aaaabd811a0b4d58c6bf25 *R/save_tsv_files.R
 a78ca58b494a6441fa36735a4793d1e0 *R/set_absolute_paths.R
 eda0bfdccfeeb86041994b56b2969bb0 *R/utils_ontology_manipulation.R
-7124bcce55aa3a91a67e59d348ae2096 *README.md
+3d5f674388a52e9ba65b985fbd5e0acb *README.md
 f10aa0d67d26ae38fe00fd4fc70e954a *build/vignette.rds
 5e8b0054c466627d3ca1b865f74151c7 *inst/doc/CALANGO_Parameters.Rmd
 63a2ea80c466a690ab4b7ca8c8612ffb *inst/doc/CALANGO_Parameters.html

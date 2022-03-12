@@ -1,3 +1,9 @@
+# CALANGO 1.0.10
+
+- Regular maintenance update:
+    
+    - Updated project home page, minor updates to documentation.
+
 # CALANGO 1.0.8
 
 - Regular maintenance update:

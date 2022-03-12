@@ -35,8 +35,7 @@ retrieve_data_files <- function(target.dir,
                                 ...){
 
   # ================== Sanity checks ==================
-  assertthat::assert_that(is.character(target.dir),
-                          length(url) == 1)
+  assertthat::assert_that(is.character(target.dir))
 
   if(!dir.exists(target.dir)){
     dir.create(target.dir, recursive = TRUE)

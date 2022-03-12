@@ -19,7 +19,7 @@ Our software has been freely inspired by (and explicitly modeled to take into ac
 The latest version of CALANGO can be installed directly from the repository using `devtools::install_github()`:
 
 ```
-devtools::install_github("fcampelo/CALANGO")
+devtools::install_github("LABpackages/CALANGO")
 ```
 
 Alternatively, you should soon be able to install the last release version from CRAN by simply doing:
@@ -240,7 +240,7 @@ in the examples file provided (`./data/parameters/`). They are, for the current 
 
 ### CALANGO OUTPUT 
 
-Live examples of CALANGO output HTML5 pages can be found <a href="https://fcampelo.github.io/CALANGO/articles/examples-page.html" target="_blank">here</a>.
+Live examples of CALANGO output HTML5 pages can be found <a href="https://labpackages.github.io/CALANGO/articles/examples-page.html" target="_blank">here</a>.
 
 CALANGO produces as its main output a dynamic HMTL5 website containing:
 
@@ -248,7 +248,7 @@ CALANGO produces as its main output a dynamic HMTL5 website containing:
 - Interactive heatmaps and scatterplots
 - A dynamic table of results.
 
-Please check our examples page at <https://fcampelo.github.io/CALANGO/> to explore the full output of CALANGO for a variety of examples. The required data to fully reproduce these examples can be obtained by using `CALANGO::retrieve_data_files()`.
+Please check our examples page at <https://labpackages.github.io/CALANGO/> to explore the full output of CALANGO for a variety of examples. The required data to fully reproduce these examples can be obtained by using `CALANGO::retrieve_data_files()`.
 
 *****
 ### CALANGO MASTERMIND
