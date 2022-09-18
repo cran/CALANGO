@@ -1,0 +1,20 @@
+## R package reference generated from DESCRIPTION metadata
+citation(auto = meta)
+
+## CALANGO manuscript
+bibentry(bibtype = "article",
+         title = "CALANGO: a phylogeny-aware comparative genomics tool for discovering quantitative genotype-phenotype associations across species",
+         author = c(person(c("Jorge", "A."), "Hongo"),
+                    person(c("Giovanni", "M."), "de Castro"),
+                    person(c("Alison", "P.A."), "Menezes"),
+                    person(c("Agnello", "C.R."), "Picorelli"),
+                    person(c("Thieres", "T.M."), "da Silva"),
+                    person(c("Eddie", "L."), "Imada"),
+                    person(c("Luigi"), "Marchionni"),
+                    person(c("Luis", "E."), "Del-Bem"),
+                    person(c("Anderson", "V."), "Chaves"),
+                    person(c("Gabriel", "M.F."), "Almeida"),
+                    person(c("Felipe"), "Campelo"),
+                    person(c("Francisco", "P."), "Lobo")),
+         year = "2022", journal = "BioRxiv preprint",
+         doi = "10.1101/2021.08.25.457574")

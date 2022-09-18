@@ -42,65 +42,45 @@ load_data_correlation <- function(defs){
 
   if (defs$spearman.qvalue.cutoff == "") {
     defs$spearman.qvalue.cutoff <- 1
-  } else {
-
-  }
+  } 
 
   if (defs$pearson.qvalue.cutoff == "") {
     defs$pearson.qvalue.cutoff <- 1
-  } else {
-
-  }
+  } 
 
   if (defs$kendall.qvalue.cutoff == "") {
     defs$kendall.qvalue.cutoff <- 1
-  } else {
-
-  }
+  } 
 
   if (defs$linear_model.qvalue.cutoff == "") {
     defs$linear_model.qvalue.cutoff <- 1
-  } else {
-
-  }
+  } 
 
 
   #correlation cutoffs, used to select only highly correlated annotation terms
 
   if (defs$spearman.cor.upper.cutoff == "") {
     defs$spearman.cor.upper.cutoff <- -1
-  } else {
-
-  }
+  } 
 
   if (defs$spearman.cor.lower.cutoff == "") {
     defs$spearman.cor.lower.cutoff <- 1
-  } else {
-
-  }
+  } 
 
   if (defs$pearson.cor.upper.cutoff == "") {
     defs$pearson.cor.upper.cutoff <- -1
-  } else {
-
   }
 
   if (defs$pearson.cor.lower.cutoff == "") {
     defs$pearson.cor.lower.cutoff <- 1
-  } else {
-
   }
 
   if (defs$kendall.cor.upper.cutoff == "") {
     defs$kendall.cor.upper.cutoff <- -1
-  } else {
-
   }
 
   if (defs$kendall.cor.lower.cutoff == "") {
     defs$kendall.cor.lower.cutoff <- 1
-  } else {
-
   }
 
 
@@ -108,33 +88,24 @@ load_data_correlation <- function(defs){
 
   if (defs$sd.cutoff == "") {
     defs$sd.cutoff <- 0
-  } else {
-
-  }
+  } 
 
   if (defs$cv.cutoff == "") {
     defs$cv.cutoff <- 0
-  } else {
-
-  }
+  } 
 
   #sum of annotation terms, used to remove low-count terms if needed. Only terms with counts greater than cutoff are further evaluated.
   if (defs$annotation_size.cutoff == "") {
     defs$annotation_size.cutoff <- 0
-  } else {
-
-  }
+  } 
 
   if (defs$prevalence.cutoff == "") {
     defs$prevalence.cutoff <- 0
-  } else {
-
   }
+
   if (defs$heterogeneity.cutoff == "") {
     defs$heterogeneity.cutoff <- 0
-  } else {
-
-  }
+  } 
 
 
   #to remove terms where standard deviation of counts equals zero
@@ -160,7 +131,7 @@ load_data_correlation <- function(defs){
                                   strip.white    = TRUE,
                                   comment.char   = "",
                                   check.names    = FALSE)
-    cat(" done!")
+    cat(" done!\n")
   } else {
     defs$y <- pbmcapply::pbmclapply(X              = defs$y.name,
                                     FUN            = utils::read.csv,
