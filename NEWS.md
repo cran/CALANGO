@@ -1,3 +1,13 @@
+# CALANGO 1.0.14
+
+- Regular maintenance update:
+    - Updated documentation, added links to published paper.
+
+# CALANGO 1.0.13
+
+- Regular maintenance update:
+    - Fixed Vignette listing. Added examples page as a full vignette.
+
 # CALANGO 1.0.12
 
 - Regular maintenance update:

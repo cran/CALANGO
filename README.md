@@ -1,11 +1,11 @@
-# CALANGO<br/><font size = +2>Comparative AnaLysis with ANnotation-based Genomic cOmponentes</font>
+# CALANGO<br/><font size = +2>Comparative AnaLysis with ANnotation-based Genomic cOmponentes</font><br/><font size = +1>Now published in <a href="https://doi.org/10.1016/j.patter.2023.100728">Cell Patterns</a>
 <!-- badges: start -->
   [![R-CMD-check](https://github.com/fcampelo/CALANGO/workflows/R-CMD-check/badge.svg)](https://github.com/fcampelo/CALANGO/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/CALANGO)](https://CRAN.R-project.org/package=CALANGO)
 [![CRAN Downloads](https://cranlogs.r-pkg.org/badges/CALANGO)](https://CRAN.R-project.org/package=CALANGO)
 <!-- badges: end -->
 
-  <img src="https://github.com/fcampelo/CALANGO/raw/master/inst/images/CALANGO_LOGO-lighter.svg" height="300" alt="CALANGO logo. Drawn by Brazilian artist Berze - https://www.facebook.com/berzearte">
+<img src="https://github.com/fcampelo/CALANGO/raw/master/inst/images/CALANGO_LOGO-lighter.svg" height="300" alt="CALANGO logo. Drawn by Brazilian artist Berze - https://www.facebook.com/berzearte">
  
 *****
  
