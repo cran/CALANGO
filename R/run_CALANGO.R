@@ -59,11 +59,8 @@
 #' a path to a text file containing the required definitions (see Details).
 #' @param type type of analysis to perform. Currently only "correlation" is
 #' supported.
-#' @param cores positive integer, how many CPU cores to use (multicore
-#' acceleration does not work in Windows systems). Setting
-#' this parameter overrides any `cores` field from `defs`. Multicore support is
-#' currently implemented using the `parallel` package, which uses forking
-#' (which means that multicore support is not available under Windows)
+#' @param cores positive integer, how many CPU cores to use. Setting
+#' this parameter overrides any `cores` field from `defs`. 
 #' @param render.report logical: should a HTML5 report be generated?
 #' @param basedir path to base folder to which all relative paths in `defs` 
 #'                refer to.

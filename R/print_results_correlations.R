@@ -11,7 +11,7 @@ print_results_correlations <- function(correlations, annotation,
   # Returns:
   #   none.
 
-  outputName  <- gsub("//", "/", outputName, fixed = TRUE)
+  #outputName  <- gsub("//", "/", outputName, fixed = TRUE)
 
 
   output <- annotation[names(correlations)]

@@ -1,3 +1,12 @@
+# CALANGO 1.0.20
+
+- Regular maintenance update:  
+    - Minor bug fix that resulted in occasional errors on Windows machines  
+    - Minor updates to documentation
+    - Minor tweak to dependencies
+    - Fixed problem that resulted in `retrieve_calanguize_genomes()` wiping out 
+    the target folder
+
 # CALANGO 1.0.14
 
 - Regular maintenance update:

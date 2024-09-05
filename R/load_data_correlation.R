@@ -115,10 +115,8 @@ load_data_correlation <- function(defs){
     defs$raw_data_sd_filter <- FALSE
   }
 
-  defs$y.name <- paste0(defs$annotation.files.dir, "/", defs$y.name[, 1])
-  defs$y.name <- gsub(pattern = "//", replacement = "/", x = defs$y.name,
-                      fixed = TRUE)
-
+  defs$y.name <- paste0(defs$annotation.files.dir, defs$dirsep, defs$y.name[, 1])
+  
   message("Loading data:")
   if (.Platform$OS.type == "windows"){
     cat("...")

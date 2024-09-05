@@ -19,11 +19,8 @@ a path to a text file containing the required definitions (see Details).}
 \item{type}{type of analysis to perform. Currently only "correlation" is
 supported.}
 
-\item{cores}{positive integer, how many CPU cores to use (multicore
-acceleration does not work in Windows systems). Setting
-this parameter overrides any `cores` field from `defs`. Multicore support is
-currently implemented using the `parallel` package, which uses forking
-(which means that multicore support is not available under Windows)}
+\item{cores}{positive integer, how many CPU cores to use. Setting
+this parameter overrides any `cores` field from `defs`.}
 
 \item{render.report}{logical: should a HTML5 report be generated?}
 

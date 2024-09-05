@@ -17,6 +17,9 @@
 #' documentation of \code{utils::download.file()}.
 #' @param unzip The unzip method to be used. See the documentation of
 #' \code{utils::unzip()} for details.
+#' @param overwrite If TRUE, overwrite existing files in target the folder 
+#' (the equivalent of unzip -o), otherwise ignore such files (the equivalent of 
+#' unzip -n).
 #'
 #' @export
 #'
@@ -29,7 +32,8 @@
 
 retrieve_calanguize_genomes <- function(target.dir,
                                 method = "auto",
-                                unzip  = getOption("unzip")){
+                                unzip  = getOption("unzip"),
+                                overwrite = TRUE){
   
   # ================== Sanity checks ==================
   assertthat::assert_that(is.character(target.dir),
@@ -37,10 +41,7 @@ retrieve_calanguize_genomes <- function(target.dir,
   
   if(!dir.exists(target.dir)){
     dir.create(target.dir, recursive = TRUE)
-  } else {
-    filelist <- dir(target.dir, full.names = TRUE)
-    unlink(filelist, recursive = TRUE, force = TRUE)
-  }
+  } 
   
   url <- "https://github.com/fcampelo/CALANGO/raw/master/inst/extdata/calanguize_genomes.zip"
   
@@ -53,8 +54,9 @@ retrieve_calanguize_genomes <- function(target.dir,
   
   utils::unzip(paste0(target.dir, "/tmpdata.zip"),
                unzip = unzip,
-               exdir = target.dir)
-  unlink(paste0(target.dir, "/__MACOSX"), recursive = TRUE, force = TRUE)
+               exdir = target.dir, 
+               overwrite = overwrite)
+  #unlink(paste0(target.dir, "/__MACOSX"), recursive = TRUE, force = TRUE)
   
   file.remove(paste0(target.dir, "/tmpdata.zip"))
   

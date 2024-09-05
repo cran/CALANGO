@@ -7,7 +7,8 @@
 retrieve_calanguize_genomes(
   target.dir,
   method = "auto",
-  unzip = getOption("unzip")
+  unzip = getOption("unzip"),
+  overwrite = TRUE
 )
 }
 \arguments{
@@ -21,6 +22,10 @@ documentation of \code{utils::download.file()}.}
 
 \item{unzip}{The unzip method to be used. See the documentation of
 \code{utils::unzip()} for details.}
+
+\item{overwrite}{If TRUE, overwrite existing files in target the folder 
+(the equivalent of unzip -o), otherwise ignore such files (the equivalent of 
+unzip -n).}
 }
 \value{
 No return value, called for side effects (see Description).

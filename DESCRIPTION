@@ -1,8 +1,8 @@
 Package: CALANGO
 Type: Package
 Title: Comparative Analysis with Annotation-Based Genomic Components
-Version: 1.0.16
-Date: 2023-04-26
+Version: 1.0.20
+Date: 2024-09-03
 Language: en-US
 Authors@R: c(person("Francisco", "Lobo",
     email   = "franciscolobo@gmail.com",
@@ -31,22 +31,22 @@ License: GPL-2
 Depends: R (>= 3.6.0)
 Imports: assertthat (>= 0.2.1), pbmcapply (>= 1.5.0), ape (>= 5.3.0),
         rmarkdown (>= 2.1.0), nlme (>= 3.1.0), BiocManager (>=
-        1.30.10), taxize (>= 0.9.92), dendextend (>= 1.15.2), heatmaply
-        (>= 1.1.0), ggplot2 (>= 2.3.2), plotly (>= 4.9.2), DT (>=
-        0.13), htmltools (>= 0.5.0), htmlwidgets (>= 1.5.1), pkgdown
-        (>= 1.5.1), knitr (>= 1.28)
+        1.30.10), dendextend (>= 1.15.2), heatmaply (>= 1.1.0), ggplot2
+        (>= 2.3.2), plotly (>= 4.9.2), DT (>= 0.13), htmltools (>=
+        0.5.0), htmlwidgets (>= 1.5.1), pkgdown (>= 1.5.1), knitr (>=
+        1.28)
 Suggests: AnnotationDbi, KEGGREST, GO.db
 Encoding: UTF-8
-RoxygenNote: 7.2.2
+RoxygenNote: 7.3.2
 URL: https://labpackages.github.io/CALANGO/
 BugReports: https://github.com/fcampelo/CALANGO/issues/
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-04-26 13:07:35 UTC; fcampelo
+Packaged: 2024-09-05 07:36:40 UTC; me24832
 Author: Francisco Lobo [aut],
   Felipe Campelo [aut, cre],
   Jorge Augusto Hongo [aut],
   Giovanni Marques de Castro [aut],
   Gabriel Almeida [sad, dnc]
 Repository: CRAN
-Date/Publication: 2023-04-26 13:22:33 UTC
+Date/Publication: 2024-09-05 14:40:01 UTC

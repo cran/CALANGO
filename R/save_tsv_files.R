@@ -1,7 +1,7 @@
 save_tsv_files <- function(defs){
 
   message("Saving results to files (this may take a while)")
-  tsvdir <- gsub("//", "/", paste0(defs$output.dir, "/tsv_files"), fixed = TRUE)
+  tsvdir <- paste0(defs$output.dir, defs$dirsep, "tsv_files")
   if (!dir.exists(tsvdir)) dir.create(tsvdir,
                                       recursive = TRUE,
                                       showWarnings = FALSE)
@@ -9,8 +9,8 @@ save_tsv_files <- function(defs){
 
   print_results_correlations(correlations = defs$contrasts.corrected,
                              annotation   = defs$annotation.contrasts,
-                             outputName   = paste0(tsvdir,
-                                                   "/contrasts_corrected.tsv"),
+                             outputName   = paste0(tsvdir, defs$dirsep,
+                                                   "contrasts_corrected.tsv"),
                              type         = "q_value")
 
   print_results_correlations(correlations = defs$contrasts,

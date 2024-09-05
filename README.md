@@ -1,8 +1,11 @@
-# CALANGO<br/><font size = +2>Comparative AnaLysis with ANnotation-based Genomic cOmponentes</font><br/><font size = +1>Now published in <a href="https://doi.org/10.1016/j.patter.2023.100728">Cell Patterns</a>
+# CALANGO<br/>
+<font size = 0>Comparative AnaLysis with ANnotation-based Genomic cOmponentes</font><br/>
+<font size = 0>Now published in <a href="https://doi.org/10.1016/j.patter.2023.100728">Patterns</a>
 <!-- badges: start -->
-  [![R-CMD-check](https://github.com/fcampelo/CALANGO/workflows/R-CMD-check/badge.svg)](https://github.com/fcampelo/CALANGO/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/CALANGO)](https://CRAN.R-project.org/package=CALANGO)
 [![CRAN Downloads](https://cranlogs.r-pkg.org/badges/CALANGO)](https://CRAN.R-project.org/package=CALANGO)
+[![R CMD check](https://github.com/fcampelo/CALANGO/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fcampelo/CALANGO/actions/workflows/R-CMD-check.yaml)
+[![DOI](https://zenodo.org/badge/446743427.svg)](https://zenodo.org/badge/latestdoi/446743427)
 <!-- badges: end -->
 
 <img src="https://github.com/fcampelo/CALANGO/raw/master/inst/images/CALANGO_LOGO-lighter.svg" height="300" alt="CALANGO logo. Drawn by Brazilian artist Berze - https://www.facebook.com/berzearte">
@@ -270,5 +273,5 @@ Please check our examples page at <https://labpackages.github.io/CALANGO/> to ex
 
 
 [multi2di]: <https://rdrr.io/cran/ape/man/multi2di.html>
-[ape]: <http://ape-package.ird.fr/>
+[ape]: <https://cran.r-project.org/package=ape>
 [Felsenstein, 1985]: <https://www.jstor.org/stable/2461605>
